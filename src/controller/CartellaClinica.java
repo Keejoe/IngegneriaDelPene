@@ -38,12 +38,6 @@ public class CartellaClinica {
         return "";
     }
 
-    /**
-     * @param codiceSanitario
-     */
-    public void aggiungiPaziente(String codiceSanitario) {
-        // TODO implement here
-    }
 
     /**
      * @param dataInizio 
@@ -81,5 +75,17 @@ public class CartellaClinica {
     public void scriviDimissioni(String lettera) {
         // TODO implement here
     }
+
+
+	public String getID() {
+		// TODO Auto-generated method stub
+		return idRicovero;
+	}
+
+
+	public boolean commit() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

@@ -1,8 +1,10 @@
 package view;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 import controller.CartellaClinica;
+import controller.Esame;
 import controller.Paziente;
 import controller.TOperatore;
 import controller.TSegreteria;
@@ -46,14 +48,80 @@ public class SegreteriaAccettazione extends Segreteria {
 					Paziente paziente = new Paziente(cod);
 					if(paziente.pazienteEsistente())
 						terminal.setTerminal("Paziente già inserito. Procedere a inserimento dati ricovero.\n");
-					else
+					else{
 						terminal.setTerminal("Inserisci Nome:\n");
-						paziente.creaPaziente("", "", new SimpleDateFormat("") , "", "", false);
+						paziente.setName(terminal.getAnswer());
+						terminal.setTerminal("Inserisci cognome:\n");
+						paziente.setSurname(terminal.getAnswer());
+						terminal.setTerminal("Inserisci Data Nascita(dd-mm-yyyy):\n");
+						try {
+							paziente.setDataNascita(new SimpleDateFormat("dd-MM-yyyy").parse(terminal.getAnswer()));
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
+						terminal.setTerminal("Inserisci Luogo Nascita:\n");
+						paziente.setLuogoNascita(terminal.getAnswer());
+						terminal.setTerminal("Inserisci Provincia di residenza:\n");
+						paziente.setProvinciaResidenza(terminal.getAnswer());
+						terminal.setTerminal("Inserisci se proveniente da fuori regione(s=sì,*=no):\n");
+						String str=new String(terminal.getAnswer());
+						if(str=="s")
+							paziente.setFuoriRegione(true);
+						else
+							paziente.setFuoriRegione(false);
+						if(paziente.commit()==true)
+							terminal.setTerminal("Inserimento completato\n");
+						else
+							terminal.setTerminal("Inserimento fallito\n");
+						
+						
+					}	
 					break;
-			case 2: //inserisco dati ricovero
-					CartellaClinica ricovero=new CartellaClinica("");
+			case 2: terminal.setTerminal("CREAZIONE CARTELLA CLINICA\n"
+					+ "Inserire codice Sanitario:\n");
+					CartellaClinica cartella=new CartellaClinica(terminal.getAnswer());
+					terminal.setTerminal("Generato ID RICOVERO: " + cartella.getID() +"\n"
+							+ "Procere ad inserimento dati Cartella.\nData inizio ricovero:");
+					Date inizio=new Date();
+					Date fine= new Date();
+					String motivo;
+					try {
+						inizio = new SimpleDateFormat("dd-MM-yyyy").parse(terminal.getAnswer());
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					terminal.setTerminal("Data fine ricovero:\n");
+					try {
+						fine = new SimpleDateFormat("dd-MM-yyyy").parse(terminal.getAnswer());
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					terminal.setTerminal("Motivo:\n");
+					motivo=terminal.getAnswer();
+					cartella.aggiungiRicovero(inizio, fine, motivo);
+					if(cartella.commit()==true)
+						terminal.setTerminal("Inserimento completato\n");
+					else
+						terminal.setTerminal("Inserimento fallito\n");
 					break;
-			case 3: //allego esami
+			case 3: boolean stop=false;
+					terminal.setTerminal("Inserire ID ricovero a cui associare gli esami");
+					String id=terminal.getAnswer();
+					while(!stop){
+						terminal.setTerminal(Esame.listaEsami());
+						terminal.setTerminal("Esame da aggiungere:\n");
+						Esame esame=new Esame(id,terminal.getAnswer());
+						terminal.setTerminal("Inserisci esito esame:\n");
+						esame.aggiungiRisultato(terminal.getAnswer());
+						if(esame.commit()==true)
+							terminal.setTerminal("Inserimento completato\n");
+						else
+							terminal.setTerminal("Inserimento fallito\n");
+						terminal.setTerminal("Inserire altro esame? (s=sì,*=no)");
+						if(terminal.getAnswer()!="s")
+							stop=true;
+					}
+					terminal.setTerminal("Inserimento esami completato\n");
 					break;
 			case 4: //stampo cartella clinica
 					break;

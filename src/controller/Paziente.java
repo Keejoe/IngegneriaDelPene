@@ -9,7 +9,7 @@ import java.text.*;
 public class Paziente {
 	
 	private String nome, cognome, luogoNascita, provinciaResidenza;
-	private SimpleDateFormat dataNascita;
+	private Date dataNascita;
 	private Boolean fuoriRegione;
 
     /**
@@ -64,14 +64,19 @@ public class Paziente {
     	this.provinciaResidenza=provinciaResidenza;
     }
     
-    public void setDataNascita(SimpleDateFormat dataNascita){
-    	this.dataNascita=dataNascita;
+    public void setDataNascita(Date date){
+    	this.dataNascita=date;
     }
     
     public void setFuoriRegione(boolean fuoriRegione){
     	this.fuoriRegione=fuoriRegione;
     }
     
+    //funzione per buttare i valori correnti nel database
+    public boolean commit(){
+    	//TODO
+    	return true;
+    }
     /**
      * @param nomeULSS 
      * @param regione

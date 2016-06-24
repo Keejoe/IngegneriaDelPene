@@ -9,20 +9,39 @@ public class Esame {
 
     /**
      * Default constructor
+     * @param string 
+     * @param id 
      */
-    public Esame() {
+    public Esame(String id, String nomeEsame) {
+    	idRicovero=id;
+    	this.nomeEsame=nomeEsame;
+    	
     }
 
     /**
      * 
      */
     private String nomeEsame;
+    
+    private String idRicovero;
+    
+    private String risultato;
 
     /**
      * @param risultato
      */
-    public void aggiungiRisultato(/*Risultato risultato*/) {
-        // TODO implement here
+    public void aggiungiRisultato(String risultato) {
+        this.risultato=risultato;
     }
 
+    public static String listaEsami(){
+    	//TODO
+    	String listaEsami = new String("");
+    	return listaEsami;
+    }
+
+	public boolean commit() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
