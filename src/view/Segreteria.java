@@ -1,6 +1,7 @@
 package view;
 import java.util.*;
 
+import controller.CartellaClinica;
 import controller.Paziente;
 import controller.TSegreteria;
 
@@ -41,8 +42,13 @@ public abstract class Segreteria {
     /**
      * @param paziente
      */
-    public void esaminaCartella(Paziente paziente) {
-        // TODO implement here
+    public void esaminaCartella(String idRicovero) {
+        CartellaClinica cartella=new CartellaClinica(idRicovero);
+        cartella.printPaziente();
+        cartella.printDatiRicovero();
+        cartella.printEsami();
+        cartella.printInterventi();
+        cartella.printTerapie();
     }
     
     public Terminal getTerminal(){

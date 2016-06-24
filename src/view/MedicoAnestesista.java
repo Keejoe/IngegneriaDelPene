@@ -23,12 +23,25 @@ public class MedicoAnestesista extends Medico {
     			+ "2) Esamina Cartella Clinica\n";
     }
     
+    public void inserisciAnestesia(){
+    	//TODO
+    	
+    }
+    
     @Override
 	public void eseguiOperazione(int val) {
 		switch(val){
-			case 1: //Inserisco dati dell'anestesia
+			case 1: terminal.setTerminal("Inserisci CF:\n");
+					String cf=terminal.getAnswer();
+					terminal.setTerminal("Inserisci Codice Intervento:\n");
+					String ci=terminal.getAnswer();
+					inserisciAnestesia();
+					partecipazioneIntervento(cf,ci);
+					
 					break;
-			case 2: esaminaCartella(new Paziente(""));
+			case 2: terminal.setTerminal(Paziente.PazientiRicoverati());
+					terminal.setTerminal("Inserire ID del Ricovero di cui visionare la cartella:\n");
+					esaminaCartella(terminal.getAnswer());
 					break;
 			default: //errore
 		

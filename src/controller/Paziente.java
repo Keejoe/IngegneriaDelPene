@@ -93,4 +93,12 @@ public class Paziente {
         return null;
     }
 
+
+
+
+	public static String PazientiRicoverati() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

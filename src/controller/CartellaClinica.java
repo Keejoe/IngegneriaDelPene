@@ -1,91 +1,72 @@
 package controller;
 
-import java.util.*;
+import java.util.ArrayList;
 
-/**
- * @author Edoardo Chigini, Fabio Scapini
- */
 public class CartellaClinica {
-
-    /**
-     * Default constructor
-     */
-    public CartellaClinica(String codiceSanitario) {
-    	this.codiceSanitario=codiceSanitario;
-    	idRicovero=generaID(codiceSanitario);
-    }
-
-    /**
-     * 
-     */
-    private String codiceSanitario;
-
-    /**
-     * 
-     */
-    private String idRicovero;
-
-
-
-
-
-
-    /**
-     * @return
-     */
-    private String generaID(String codiceSanitario) {
-        // TODO direi di fare hash codiceSanitario e data Accettazione
-        return "";
-    }
-
-
-    /**
-     * @param dataInizio 
-     * @param dataFine 
-     * @param motivo
-     */
-    public void aggiungiRicovero(Date dataInizio, Date dataFine, String motivo) {
-        // TODO implement here
-    }
-
-    /**
-     * @param letto
-     */
-    public void aggiungiLetto(Letto letto) {
-        // TODO implement here
-    }
-
-    /**
-     * @param esame
-     */
-    public void allegaEsame(Esame esame) {
-        // TODO implement here
-    }
-
-    /**
-     * @param esame
-     */
-    public void rimuoviEsame(Esame esame) {
-        // TODO implement here
-    }
-
-    /**
-     * @param lettera
-     */
-    public void scriviDimissioni(String lettera) {
-        // TODO implement here
-    }
-
-
-	public String getID() {
-		// TODO Auto-generated method stub
-		return idRicovero;
+	
+	Paziente paziente;
+	Ricovero ricovero;
+	private ArrayList<Esame> esami;
+	private ArrayList<Intervento> interventi;
+	private ArrayList<Terapia> terapie;
+	
+	public CartellaClinica(String idRicovero){
+		ricovero=popolaRicovero(idRicovero);
+		paziente=popolaPaziente(idRicovero);
+		associaEsami(esami, idRicovero);
+		associaInterventi(interventi, idRicovero);
+		associaTerapie(terapie, idRicovero);
 	}
 
-
-	public boolean commit() {
+	private void associaTerapie(ArrayList<Terapia> terapie2, String idRicovero) {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
 
+	private void associaInterventi(ArrayList<Intervento> interventi2, String idRicovero) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void associaEsami(ArrayList<Esame> esami2, String idRicovero) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private Paziente popolaPaziente(String idRicovero) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Ricovero popolaRicovero(String idRicovero) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void printPaziente() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void printDatiRicovero() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void printEsami() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void printInterventi() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void printTerapie() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 }

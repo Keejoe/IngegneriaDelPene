@@ -22,7 +22,7 @@ public class Terapia {
      * @param medico 
      * @param cartella
      */
-    public void aggiungiTerapia(Date dataInizio, Date dataFine, String dose, String modalita, TOperatore medico, CartellaClinica cartella) {
+    public void aggiungiTerapia(Date dataInizio, Date dataFine, String dose, String modalita, TOperatore medico, Ricovero cartella) {
         // TODO implement here
     }
 

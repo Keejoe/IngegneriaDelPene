@@ -36,7 +36,9 @@ public class Infermiere extends Operatore {
 		switch(val){
 			case 1: //Registro somministrazione farmaco
 					break;
-			case 2: esaminaCartella(new Paziente(""));
+			case 2: terminal.setTerminal(Paziente.PazientiRicoverati());
+					terminal.setTerminal("Inserire ID del Ricovero di cui visionare la cartella:\n");
+					esaminaCartella(terminal.getAnswer());
 					break;
 			default: //errore
 		

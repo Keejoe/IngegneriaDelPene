@@ -7,10 +7,19 @@ import java.util.*;
  */
 public class Intervento {
 
+	String idRicovero;
+	private Date giorno;
+	private int minuti;
+	private int ora;
+	private int durata;
+	private String tipo;
+	private String livelloUrgenza;
     /**
      * Default constructor
+     * @param idRicovero 
      */
-    public Intervento() {
+    public Intervento(String idRicovero) {
+    	this.idRicovero=idRicovero;
     }
 
 
@@ -23,22 +32,25 @@ public class Intervento {
      * @param tipo 
      * @param livelloUrgenza
      */
-    public void aggiungiIntervento(CartellaClinica cartella, int giorno, int ora, int minuto, int durata, String tipo, int livelloUrgenza) {
-        // TODO implement here
+    public void dettagliIntervento(Date giorno, int ora, int minuto, int durata, String tipo, String livelloUrgenza) {
+        this.giorno=giorno;
+        this.ora=ora;
+        this.minuti=minuto;
+        this.durata=durata;
+        this.tipo=tipo;
+        this.livelloUrgenza=livelloUrgenza;
     }
 
-    /**
-     * @param dati
-     */
-    public void modificaAnestesia(String dati) {
-        // TODO implement here
-    }
+   
+	public boolean commit() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
-    /**
-     * @param dati
-     */
-    public void aggiungiDatiOS(String dati) {
-        // TODO implement here
-    }
+
+	public String getCI() {
+		
+		return "CI"+ idRicovero + giorno.getDay() + ora + minuti;
+	}
 
 }
