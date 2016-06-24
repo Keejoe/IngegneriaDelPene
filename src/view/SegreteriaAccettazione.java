@@ -125,7 +125,7 @@ public class SegreteriaAccettazione extends Segreteria {
 					}
 					terminal.setTerminal("Inserimento esami completato\n");
 					break;
-			case 4: //stampo cartella clinica
+			case 4: terminal.setTerminal("Contatto stampante in corso...\nCartella Clinica Stampata\n");
 					break;
 			case 5: esaminaCartella(new Paziente(""));
 					break;
