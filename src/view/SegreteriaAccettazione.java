@@ -42,6 +42,8 @@ public class SegreteriaAccettazione extends Segreteria {
 
     @Override
 	public void eseguiOperazione(int val) {
+    	if (terminal == null)
+    		System.out.println("PDD");
 		switch(val){
 			case 1: terminal.setTerminal("Inserisci Codice Sanitario:\n");
 					String cod = terminal.getAnswer();

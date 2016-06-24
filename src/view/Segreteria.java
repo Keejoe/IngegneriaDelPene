@@ -18,6 +18,7 @@ public abstract class Segreteria {
     	
     	this.tipo = tipo;
     	terminal = new Terminal(this, tipo);
+    	terminal.restart();
     }
 
     /**

@@ -17,6 +17,7 @@ public abstract class Operatore {
     public Operatore(TOperatore tipo) {
     	this.tipo = tipo;
     	terminal = new Terminal(this, tipo);
+    	terminal.restart();
     }
 
     /**

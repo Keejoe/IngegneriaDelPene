@@ -12,13 +12,11 @@ public class Terminal {
 	public Terminal(Operatore operatore, TOperatore tipo){
 		this.operatore = operatore;
 		isSeg = false;
-		restart();
 	}
 	
 	public Terminal(Segreteria operatore, TSegreteria tipo){
 		this.operatore = operatore;
 		isSeg = true;
-		restart();
 	}
 	
 	public void restart(){
