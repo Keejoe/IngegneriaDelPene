@@ -45,7 +45,7 @@ public class MedicoResponsabile extends Medico {
 					String cf=terminal.getAnswer();
 					partecipazioneIntervento(cf,intervento.getCI());
 					break;
-			case 2: terminal.setTerminal
+			case 2: 
 					break;
 			case 3: //compila lettera dimissione
 					break;

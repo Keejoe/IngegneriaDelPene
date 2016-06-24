@@ -6,6 +6,7 @@ import controller.CartellaClinica;
 import controller.PartecipazioneIntervento;
 import controller.Paziente;
 import controller.TOperatore;
+import model.Model;
 
 /**
  * @author Edoardo Chigini, Fabio Scapini
@@ -13,13 +14,16 @@ import controller.TOperatore;
 public abstract class Operatore {
 
 	protected Terminal terminal;
+	protected Model model;
     /**
      * Default constructor
      */
     public Operatore(TOperatore tipo) {
     	this.tipo = tipo;
     	terminal = new Terminal(this, tipo);
+    	model = new Model(terminal);
     	terminal.restart();
+    	
     }
 
     /**
@@ -40,14 +44,14 @@ public abstract class Operatore {
         cartella.printTerapie();
     }
     
-    protected void partecipazioneIntervento(String cf, String ci){
-    	PartecipazioneIntervento ioCero=new PartecipazioneIntervento(cf,ci);
-		if(ioCero.commit()==true)
+	protected void partecipazioneIntervento(String cf, String ci) {
+		PartecipazioneIntervento part=new PartecipazioneIntervento(cf, ci);
+		if(part.commit()==true)
 			terminal.setTerminal("Inserimento completato\n");
 		else
 			terminal.setTerminal("Inserimento fallito\n");
-    	
-    }
+		
+	}
 
     /**
      * 

@@ -4,14 +4,14 @@ import java.util.*;
 import controller.CartellaClinica;
 import controller.Paziente;
 import controller.TSegreteria;
-
+import model.Model;
 /**
  * @author Edoardo Chigini, Fabio Scapini
  */
 public abstract class Segreteria {
 	
 	protected Terminal terminal;
-
+	protected Model model;
     /**
      * Default constructor
      */
@@ -19,6 +19,7 @@ public abstract class Segreteria {
     	
     	this.tipo = tipo;
     	terminal = new Terminal(this, tipo);
+    	model = new Model(terminal);
     	terminal.restart();
     }
 
