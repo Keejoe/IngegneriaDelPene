@@ -7,10 +7,21 @@ import java.util.*;
  */
 public class Terapia {
 
-    /**
+    private String idRicovero;
+	private String cf;
+	private Date dataInizio;
+	private Date dataFIne;
+	private String dose;
+	private String modalita;
+
+	/**
      * Default constructor
+     * @param codf 
+     * @param idRicovero 
      */
-    public Terapia() {
+    public Terapia(String idRicovero, String codf) {
+    	this.idRicovero=idRicovero;
+    	this.cf=codf;
     }
 
 
@@ -22,8 +33,12 @@ public class Terapia {
      * @param medico 
      * @param cartella
      */
-    public void aggiungiTerapia(Date dataInizio, Date dataFine, String dose, String modalita, TOperatore medico, Ricovero cartella) {
-        // TODO implement here
+    public void aggiungiTerapia(Date dataInizio, Date dataFine, String dose, String modalita) {
+        this.dataInizio=dataInizio;
+        this.dataFIne=dataFine;
+        this.dose=dose;
+        this.modalita=modalita;
+        
     }
 
     /**
@@ -35,5 +50,11 @@ public class Terapia {
     public void aggiungiSomministrazione(Date data, int ora, int minuto, String dose) {
         // TODO implement here
     }
+
+
+	public boolean commit() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

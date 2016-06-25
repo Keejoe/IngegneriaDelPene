@@ -1,12 +1,14 @@
 package view;
 
 import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 import controller.Intervento;
 import controller.Paziente;
 import controller.TOperatore;
+import controller.Terapia;
 
 /**
  * @author Edoardo Chigini, Fabio Scapini
@@ -45,7 +47,18 @@ public class MedicoResponsabile extends Medico {
 					String cf=terminal.getAnswer();
 					partecipazioneIntervento(cf,intervento.getCI());
 					break;
-			case 2: 
+			case 2: terminal.setTerminal("Inserire ricovero a cui associare la terapia\n");
+					String idRicovero=terminal.getAnswer();
+					terminal.setTerminal("Inserire medico che prescrive la terapia\n");
+					String codf=terminal.getAnswer();
+					Terapia terapia=new Terapia(idRicovero, codf);
+					compilaSchedaTerapia(terapia);
+					if(terapia.commit()==true)
+						terminal.setTerminal("Inserimento completato\n");
+					else
+						terminal.setTerminal("Inserimento fallito\n");
+					
+			
 					break;
 			case 3: //compila lettera dimissione
 					break;
@@ -57,6 +70,30 @@ public class MedicoResponsabile extends Medico {
 		
 		
 		}
+		
+	}
+
+
+	private void compilaSchedaTerapia(Terapia terapia) {
+		terminal.setTerminal("Inserire data inzio terapia:\n");
+		Date inizioTerapia=new Date();
+		Date fineTerapia=new Date();
+		try {
+			inizioTerapia = new SimpleDateFormat("dd-MM-yyyy").parse(terminal.getAnswer());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		terminal.setTerminal("Inserire data fine terapia:\n");
+		try {
+			fineTerapia = new SimpleDateFormat("dd-MM-yyyy").parse(terminal.getAnswer());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		terminal.setTerminal("Inserire modalità terapia:\n");
+		String modalita=terminal.getAnswer();
+		terminal.setTerminal("Inserire dose terapia:\n");
+		String dose=terminal.getAnswer();
+		terapia.aggiungiTerapia(inizioTerapia, fineTerapia, dose, modalita);
 		
 	}
 

@@ -18,17 +18,24 @@ public class Letto {
     /**
      * 
      */
-    private String codLetto;
+    private int codLetto;
     
     private String idRicovero;
     
-    private String genCodLetto(String idRicovero, TReparto Reparto){
-    	//TODO
-    	String str="";
-    	return "";
+    private int genCodLetto(String idRicovero, TReparto Reparto){
+    	int num=(int)(Math.random()*100);
+    	if(Reparto==TReparto.CARDIOLOGIA)
+    		return num;
+    	if(Reparto==TReparto.PEDIATRIA)
+    		return num+100;
+    	if(Reparto==TReparto.PNEUMOLOGIA)
+    		return num+200;
+    	if(Reparto==TReparto.PSICHIATRIA)
+    		return num+300;
+    	return 0;
     }
     
-    public String getCodLetto(){
+    public int getCodLetto(){
     	return codLetto;
     }
     

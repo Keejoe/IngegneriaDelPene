@@ -16,7 +16,7 @@ public class Ricovero {
 	
     public Ricovero(String codiceSanitario) {
     	this.codiceSanitario=codiceSanitario;
-    	idRicovero=generaID(codiceSanitario);
+    	
     }
 
    
@@ -29,9 +29,13 @@ public class Ricovero {
     /**
      * @return
      */
-    private String generaID(String codiceSanitario) {
-        // TODO direi di fare hash codiceSanitario e data Accettazione
-        return "";
+    private void generaID(String codiceSanitario, Date dataInizio) {
+    	int sum=dataInizio.getDay()+dataInizio.getMonth()+dataInizio.getYear();
+        this.idRicovero=codiceSanitario + sum;
+    }
+    
+    public String getID(){
+    	return idRicovero;
     }
 
 
@@ -44,9 +48,19 @@ public class Ricovero {
         this.dataInizio=dataInizio;
         this.dataFine=dataFine;
         this.motivo=motivo;
+        generaID(this.codiceSanitario,this.dataInizio);
     }
 
-    /**
+  
+
+
+
+
+
+
+
+
+	/**
      * @param letto
      */
     public void aggiungiLetto(Letto letto) {
@@ -75,10 +89,6 @@ public class Ricovero {
     }
 
 
-	public String getID() {
-		// TODO Auto-generated method stub
-		return idRicovero;
-	}
 
 
 	public boolean commit() {

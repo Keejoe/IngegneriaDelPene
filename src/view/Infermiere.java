@@ -34,7 +34,7 @@ public class Infermiere extends Operatore {
     @Override
 	public void eseguiOperazione(int val) {
 		switch(val){
-			case 1: //Registro somministrazione farmaco
+			case 1: 
 					break;
 			case 2: terminal.setTerminal(Paziente.PazientiRicoverati());
 					terminal.setTerminal("Inserire ID del Ricovero di cui visionare la cartella:\n");

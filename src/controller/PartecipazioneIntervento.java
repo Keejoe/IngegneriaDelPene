@@ -3,7 +3,7 @@ package controller;
 public class PartecipazioneIntervento {
 
 	int giorno, ora, minuto;
-	int idRicovero;
+	String idRicovero;
 	String cf;
 	public PartecipazioneIntervento(String cf, String ci) {
 		this.cf=cf;
@@ -13,24 +13,24 @@ public class PartecipazioneIntervento {
 		idRicovero=ciToRicovero(ci);
 	}
 
-	private int ciToRicovero(String ci) {
-		// TODO Auto-generated method stub
-		return 0;
+	private String ciToRicovero(String ci) {
+		
+		return ci.substring(2,12);
 	}
 
 	private int ciToMinuto(String ci) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return Integer.parseInt(ci.substring(17,18));
 	}
 
 	private int ciToOra(String ci) {
 		// TODO Auto-generated method stub
-		return 0;
+		return Integer.parseInt(ci.substring(15,16));
 	}
 
 	private int ciToGiorno(String ci) {
 		// TODO Auto-generated method stub
-		return 0;
+		return Integer.parseInt(ci.substring(13,14));
 	}
 
 	public boolean commit() {
